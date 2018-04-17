@@ -8,8 +8,8 @@ class Data(object):
     Class to handle loading and processing of raw datasets.
     """
     def __init__(self, data_source,
-                 alphabet="abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}",
-                 input_size=1014, num_of_classes=4):
+                 alphabet="abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}áàâãéóôõç",
+                 input_size=1014, num_of_classes=2):
         """
         Initialization of a Data object.
 

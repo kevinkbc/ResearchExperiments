@@ -2,6 +2,9 @@ data/
 logs/
 .idea/
 
+CharCnn_Keras*/
+Crepe/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -208,3 +211,4 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
+

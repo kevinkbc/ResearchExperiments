@@ -1,5 +1,6 @@
 import tensorflow as tf
 import json
+import numpy as np
 
 from data_utils import Data
 from models.char_cnn_zhang import CharCNNZhang
@@ -62,3 +63,19 @@ if __name__ == "__main__":
                 epochs=config["training"]["epochs"],
                 batch_size=config["training"]["batch_size"],
                 checkpoint_every=config["training"]["checkpoint_every"])
+
+from sklearn.metrics import classification_report, accuracy_score
+
+#metrics
+predictions = model.model.predict(validation_inputs)
+classPredictions = np.argmax(predictions,axis=-1)
+classValidationLabels = np.argmax(validation_labels,axis=-1)
+print("predictions\n")
+print(classPredictions)
+print("labels\n")
+print(classValidationLabels)
+
+print(classification_report(classValidationLabels, classPredictions))
+
+print("Accuracy\n")
+print(accuracy_score(classValidationLabels, classPredictions))

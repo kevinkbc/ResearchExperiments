@@ -1,5 +1,12 @@
 #data/
+CNN/data/ag_news_csv/
+CNN/data/yelp_review_polarity/
+#logs
 logs/
+CNN/log*.txt
+CNN/screen*.txt
+*.tar.gz
+
 .idea/
 
 CharCnn_Keras*/

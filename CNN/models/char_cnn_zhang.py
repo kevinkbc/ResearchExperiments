@@ -44,6 +44,12 @@ class CharCNNZhang(object):
         self.loss = loss
         self._build_model()  # builds self.model variable
 
+    #not used yet
+    def get_class_weights(y):
+        counter = Counter(y)
+        majority = max(counter.values())
+        return  {cls: float(majority/count) for cls, count in counter.items()}
+
     def _build_model(self):
         """
         Build and compile the Character Level CNN model
@@ -105,6 +111,7 @@ class CharCNNZhang(object):
                        validation_data=(validation_inputs, validation_labels),
                        epochs=epochs,
                        batch_size=batch_size,
+                       class_weight = {0 : 98, 1 : 1}, #hardcoded weight for testing purpose only
                        verbose=2,
                        callbacks=[tensorboard])
 

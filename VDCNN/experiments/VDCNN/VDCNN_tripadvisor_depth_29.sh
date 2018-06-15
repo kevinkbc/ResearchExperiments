@@ -1,10 +1,10 @@
 cd ../../
 dataset="tripadvisor"
 depth=29
-model_folder="models/VDCNN/VDCNN_${dataset}_depth@${depth}"
 epoch_size=5000
 batch_size=128
-iterations=$(($epoch_size*1))
+iterations=$(($epoch_size*15))
+model_folder="models/VDCNN/VDCNN_${dataset}_depth@${depth}_iter_${iterations}"
 halving=$((3*$epoch_size))
 
 python -m src.VDCNN --dataset "${dataset}" \

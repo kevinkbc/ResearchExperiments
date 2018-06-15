@@ -1,0 +1,14 @@
+usage: 
+    Very Deep CNN with optional residual connections (https://arxiv.org/abs/1606.01781)
+    
+       [-h] [--dataset DATASET] [--model_folder MODEL_FOLDER]
+       [--depth {9,17,29,49}] [--maxlen MAXLEN] [--shortcut] [--shuffle]
+       [--chunk_size CHUNK_SIZE] [--batch_size BATCH_SIZE]
+       [--test_batch_size TEST_BATCH_SIZE] [--iterations ITERATIONS] [--lr LR]
+       [--lr_halve_interval LR_HALVE_INTERVAL]
+       [--class_weights CLASS_WEIGHTS [CLASS_WEIGHTS ...]]
+       [--test_interval TEST_INTERVAL] [--gpu] [--seed SEED]
+       [--last_pooling_layer {k-max-pooling,max-pooling}]
+
+    Very Deep CNN with optional residual connections (https://arxiv.org/abs/1606.01781)
+    : error: argument --depth: invalid choice: 19 (choose from 9, 17, 29, 49)

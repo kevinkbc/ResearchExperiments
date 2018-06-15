@@ -193,13 +193,13 @@ class VDCNN(nn.Module):
 
 if __name__ == "__main__":
 
-    logger.info("Starting at {}".format(lib.timestamp()))
     opt = get_args()
 
     if not os.path.exists(opt.model_folder):
         os.makedirs(opt.model_folder)
 
     logger = lib.get_logger(logdir=opt.model_folder, logname="logs.txt")
+    logger.info("Starting at {}".format(lib.timestamp()))
     logger.info("parameters: {}".format(vars(opt)))
 
     dataset = load_datasets(names=[opt.dataset])[0]
@@ -218,7 +218,7 @@ if __name__ == "__main__":
 
     logger.info("  - loading test samples...")
     te_sentences, te_labels = lib.create_dataset(te_data)
-    logger.info("  - loading test samples... {} samples".format(len(tr_sentences)))
+    logger.info("  - loading test samples... {} samples".format(len(te_sentences)))
 
     if opt.shuffle:
         logger.info("  - shuffling...")
@@ -237,7 +237,13 @@ if __name__ == "__main__":
 
     tr_data = [x_tr, np.array(tr_labels)]
     te_data = [x_te, np.array(te_labels)]
-
+    
+    #print 20000 samples numpy array
+    # np.set_printoptions(threshold=20000)
+    # print(te_labels)
+    
+    #go back to default
+    # np.set_printoptions(threshold=1000)
     torch.manual_seed(opt.seed)
     print("Seed for random numbers: ", torch.initial_seed())
 
@@ -257,7 +263,7 @@ if __name__ == "__main__":
 
     tr_gen = batchify(tr_data, batch_size=opt.batch_size)
 
-    for n_iter in range(opt.iterations):
+    for n_iter in range(1, opt.iterations+1):
         try:
             data = tr_gen.__next__()
         except StopIteration:
@@ -290,10 +296,11 @@ if __name__ == "__main__":
             xte, yte = te_data
             te_gen = batchify([xte, yte], batch_size=opt.batch_size)
             y_prob = predict_from_model(te_gen, model, gpu=opt.gpu)
-            te_metrics = lib.get_metrics(yte, y_prob, n_classes=n_classes, list_metrics=['accuracy', 'log_loss'])
+            te_metrics = lib.get_metrics(yte, y_prob, n_classes=n_classes, list_metrics=['accuracy', 'log_loss','pres_0','pres_1','recall_0','recall_1'])
+            confusion_matrix = lib.get_metrics(yte, y_prob, n_classes=n_classes, list_metrics=['cm'])
             params = [dataset_name, n_iter, opt.iterations, tr_metrics, te_metrics]
             logger.info('{} - Iter [{}/{}] - train metrics: {}, test metrics: {}'.format(*params))
-
+            logger.info('Confusion matrix \n {}'.format(confusion_matrix))
             diclogs = {
                 "predictions": {
                     "test": {

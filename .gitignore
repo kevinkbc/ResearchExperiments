@@ -3,8 +3,8 @@ CNN/data/ag_news_csv/
 CNN/data/yelp_review_polarity/
 #logs
 logs/
-CNN/log*.txt
-CNN/screen*.txt
+CNN/text-logs/
+#CNN/screen*.txt
 *.tar.gz
 
 .idea/

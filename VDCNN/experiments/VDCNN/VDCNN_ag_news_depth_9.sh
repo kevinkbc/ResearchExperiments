@@ -5,7 +5,7 @@ depth=9
 model_folder="models/VDCNN/VDCNN_${dataset}_depth@${depth}"
 epoch_size=5000
 batch_size=128
-iterations=$(($epoch_size*50))
+iterations=$(($epoch_size*1))
 halving=$((3*$epoch_size))
 
 python -m src.VDCNN --dataset "${dataset}" \

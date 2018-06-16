@@ -6,6 +6,13 @@ from data_utils import Data
 from models.char_cnn_zhang import CharCNNZhang
 from models.char_cnn_kim import CharCNNKim
 
+from keras.backend.tensorflow_backend import set_session
+
+#limit gpu vram usage
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+set_session(tf.Session(config=config))
+
 tf.flags.DEFINE_string("model", "char_cnn_zhang", "Specifies which model to use: char_cnn_zhang or char_cnn_kim")
 FLAGS = tf.flags.FLAGS
 #FLAGS._parse_flags()

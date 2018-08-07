@@ -1,0 +1,122 @@
+2018-08-05 00:01:41.213342: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-08-05 00:01:41.339980: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.683
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.76GiB
+2018-08-05 00:01:41.340010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-08-05 00:01:41.542251: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-08-05 00:01:41.542281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-08-05 00:01:41.542286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-08-05 00:01:41.542497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10413 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/kevin/miniconda3/envs/research/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:497: calling conv1d (from tensorflow.python.ops.nn_ops) with data_format=NHWC is deprecated and will be removed in a future version.
+Instructions for updating:
+`NHWC` for data_format is deprecated, use `NWC` instead
+WARNING:tensorflow:From /home/kevin/miniconda3/envs/research/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py:198: retry (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use the retry module or similar alternatives.
+Data loaded from data/amazon_review_samples/samples_train_50.csv
+Data loaded from data/amazon_review_samples/samples_test_50.csv
+char_cnn_zhang
+zhang
+CharCNNZhang model built: 
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+sent_input (InputLayer)      (None, 1014)              0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 1014, 128)         10112     
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 1008, 256)         229632    
+_________________________________________________________________
+thresholded_re_lu_1 (Thresho (None, 1008, 256)         0         
+_________________________________________________________________
+max_pooling1d_1 (MaxPooling1 (None, 336, 256)          0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 330, 256)          459008    
+_________________________________________________________________
+thresholded_re_lu_2 (Thresho (None, 330, 256)          0         
+_________________________________________________________________
+max_pooling1d_2 (MaxPooling1 (None, 110, 256)          0         
+_________________________________________________________________
+conv1d_3 (Conv1D)            (None, 108, 256)          196864    
+_________________________________________________________________
+thresholded_re_lu_3 (Thresho (None, 108, 256)          0         
+_________________________________________________________________
+conv1d_4 (Conv1D)            (None, 106, 256)          196864    
+_________________________________________________________________
+thresholded_re_lu_4 (Thresho (None, 106, 256)          0         
+_________________________________________________________________
+conv1d_5 (Conv1D)            (None, 104, 256)          196864    
+_________________________________________________________________
+thresholded_re_lu_5 (Thresho (None, 104, 256)          0         
+_________________________________________________________________
+conv1d_6 (Conv1D)            (None, 102, 256)          196864    
+_________________________________________________________________
+thresholded_re_lu_6 (Thresho (None, 102, 256)          0         
+_________________________________________________________________
+max_pooling1d_3 (MaxPooling1 (None, 34, 256)           0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 8704)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1024)              8913920   
+_________________________________________________________________
+thresholded_re_lu_7 (Thresho (None, 1024)              0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 1024)              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 1024)              1049600   
+_________________________________________________________________
+thresholded_re_lu_8 (Thresho (None, 1024)              0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 1024)              0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 2)                 2050      
+=================================================================
+Total params: 11,451,778
+Trainable params: 11,451,778
+Non-trainable params: 0
+_________________________________________________________________
+Training CharCNNZhang model: 
+Train on 180000 samples, validate on 20000 samples
+Epoch 1/10
+ - 101s - loss: 7.1974e-04 - val_loss: 8.0252
+Epoch 2/10
+ - 95s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 3/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 4/10
+ - 95s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 5/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 6/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 7/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 8/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 9/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+Epoch 10/10
+ - 96s - loss: 1.1921e-07 - val_loss: 8.0252
+/home/kevin/miniconda3/envs/research/lib/python3.6/site-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+predictions
+
+[1 1 1 ... 1 1 1]
+labels
+
+[0 1 1 ... 1 1 1]
+             precision    recall  f1-score   support
+
+          0       0.00      0.00      0.00      9958
+          1       0.50      1.00      0.67     10042
+
+avg / total       0.25      0.50      0.34     20000
+
+Accuracy
+
+0.5021
+Confusion Matrix
+[[    0  9958]
+ [    0 10042]]

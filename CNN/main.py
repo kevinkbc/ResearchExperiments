@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 batch_size=config["training"]["batch_size"],
                 checkpoint_every=config["training"]["checkpoint_every"])
 
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 
 #metrics
 predictions = model.model.predict(validation_inputs)
@@ -86,3 +86,6 @@ print(classification_report(classValidationLabels, classPredictions))
 
 print("Accuracy\n")
 print(accuracy_score(classValidationLabels, classPredictions))
+
+print("Confusion Matrix")
+print(confusion_matrix(classValidationLabels, classPredictions))

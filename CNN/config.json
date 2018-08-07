@@ -1,20 +1,20 @@
 {
   "notes": "default",
   "data": {
-    "alphabet": "abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}áàâãéóôõç",
-    "alphabet_size": 78,
+    "alphabet": "abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}",
+    "alphabet_size": 69,
     "input_size": 1014,
     
     "num_of_classes": 2,
-    "training_data_source": "data/tripadvisor/reviews_train_polarity.csv",
-    "validation_data_source": "data/tripadvisor/reviews_test_polarity.csv"
+    "training_data_source": "data/amazon_review_samples/samples_train_50.csv",
+    "validation_data_source": "data/amazon_review_samples/samples_test_50.csv"
   },
   "model": "char_cnn_zhang",
   "training": {
     "epochs": 1000,
     "batch_size": 128,
-    "evaluate_every": 10,
-    "checkpoint_every": 10
+    "evaluate_every": 100,
+    "checkpoint_every": 100
   },
   "char_cnn_zhang": {
     "embedding_size": 128,
